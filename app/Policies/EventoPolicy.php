@@ -6,14 +6,14 @@ use App\Models\Evento;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class EventosPolicy
+class EventoPolicy
 {
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        return  $user->isAdmin;
+        return  $user->isAdmin ==true;
     }
 
     /**
@@ -21,7 +21,7 @@ class EventosPolicy
      */
     public function view(User $user, Evento $evento): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class EventosPolicy
      */
     public function create(User $user): bool
     {
-        return $user->isAdmin;
+        return $user->isAdmin == true;
     }
 
     /**
@@ -37,7 +37,7 @@ class EventosPolicy
      */
     public function update(User $user, Evento $evento): bool
     {
-        return  $user->isAdmin;
+        return  $user->isAdmin ==true;
     }
 
     /**
@@ -45,7 +45,7 @@ class EventosPolicy
      */
     public function delete(User $user, Evento $evento): bool
     {
-        return  $user->isAdmin;
+        return  $user->isAdmin ==true;
     }
 
     /**

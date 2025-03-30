@@ -21,11 +21,18 @@ Route::middleware('auth')->group(function () {
     Route::put('/eventos/{evento}', [EventoController::class, 'update'])->name('evento.update');
     Route::post('/eventos/create', [EventoController::class, 'store'])->name('evento.store');
     Route::delete('/eventos/{evento}/destroy', [EventoController::class, 'destroy'])->name('evento.destroy');
-
+    Route::post('/eventos/{evento}/participar', [ParticipanteController::class, 'store'])
+         ->name('participante.store');
+         
+         Route::put('/eventos/{evento}/participacion', [ParticipanteController::class, 'update'])
+         ->name('participante.update');
+         
+    Route::delete('/eventos/{evento}/participacion', [ParticipanteController::class, 'destroy'])
+         ->name('participante.destroy');
     //rutas para participantes
+    Route::get('/mis-participaciones', [ParticipanteController::class, 'index'])->name('participante.index');
     Route::post('/participante/{evento}/create', [ParticipanteController::class, 'store'])->name('participante.store');
     Route::delete('/participante/{evento}/destroy', [ParticipanteController::class, 'destroy'])->name('participante.destroy');
 
 });
-
 require __DIR__.'/auth.php';
