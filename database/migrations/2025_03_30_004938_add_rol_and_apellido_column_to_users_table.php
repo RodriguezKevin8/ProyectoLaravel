@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('apellido');
-            $table->boolean('isAdmin');
+            $table->boolean('isAdmin')->default(0);
         });
     }
 
