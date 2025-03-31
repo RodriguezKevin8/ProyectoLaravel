@@ -3,11 +3,12 @@
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ParticipanteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReporteController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', function() {return view('dashboard');} )->name('dashboard');
+     Route::get('/', [ReporteController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

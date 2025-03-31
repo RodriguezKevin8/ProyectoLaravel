@@ -27,8 +27,9 @@
                     <x-nav-link :href="route('participante.index')" :active="request()->routeIs('participante.index')">
                         {{ __('Participaciones') }}
                     </x-nav-link>
-                
-               
+                </div>
+            
+                   
             </div>
 
             <!-- Settings Dropdown -->
