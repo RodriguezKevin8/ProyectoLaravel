@@ -26,8 +26,15 @@ Route::middleware('auth')->group(function () {
          ->name('participante.store');
          
          Route::put('/eventos/{evento}/participacion', [ParticipanteController::class, 'update'])
+     
          ->name('participante.update');
-         
+         Route::get('/reporte/eventos', [EventoController::class, 'reporteEventos'])->name('reporte.eventos');
+
+         // Ruta para el reporte de participación
+         Route::get('/reporte/participacion', [EventoController::class, 'reporteParticipacion'])->name('reporte.participacion');    
+         Route::get('/reporte', function () {
+          return view('reportes.index');
+      })->name('reporte.index');
     Route::delete('/eventos/{evento}/participacion', [ParticipanteController::class, 'destroy'])
          ->name('participante.destroy');
     //rutas para participantes

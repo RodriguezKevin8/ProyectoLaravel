@@ -6,6 +6,8 @@ use App\Models\Evento;
 use App\Models\Participante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmacionMail;
 
 class ParticipanteController extends Controller
 {
@@ -33,6 +35,8 @@ class ParticipanteController extends Controller
                 'user_id' => auth()->user()->id
             ]);
         }
+        $email = auth()->user()->email;
+        Mail::to($email)->send(new ConfirmacionMail());
 
         return redirect()->route('evento.show', $evento)
                ->with('message', 'Has confirmado tu participación');
